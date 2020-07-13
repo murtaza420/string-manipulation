@@ -26,6 +26,6 @@ def rearrangeString(userInput):
             print(letterList[letter][i], end='')
 
 if __name__ == "__main__":
-    userInput = input('Please enter a string: ')
+    userInput = input('Please enter a string:\n')
     getFirstSingleLetter(userInput)
     rearrangeString(userInput)
