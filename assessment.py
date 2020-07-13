@@ -1,13 +1,31 @@
-import sys
-
 def getFirstSingleLetter(userInput):
-    pass
+    firstSingleLetter = ''
+    userInputLowerCase = userInput.lower()
+    for i in range(len(userInputLowerCase)):
+        if userInputLowerCase.count(userInputLowerCase[i]) == 1:
+            firstSingleLetter = userInput[i]
+            break
+    print(firstSingleLetter)
 
 def rearrangeString(userInput):
-    pass
+    letterCounts = {}
+    letterList = {}
+    userInputLowerCase = userInput.lower()
+    for i in range(len(userInputLowerCase)):
+        letterCounts.update({ userInputLowerCase[i]: userInputLowerCase.count(userInputLowerCase[i]) })
+        if userInputLowerCase[i] in letterList:
+            temp = letterList[userInputLowerCase[i]]
+            temp.append(userInput[i])
+            letterList.update({ userInputLowerCase[i]: temp })
+        else:
+            letterList.update({ userInputLowerCase[i]: [userInput[i]] })
+
+
+    for letter in sorted(letterCounts, key=letterCounts.get):
+        for i in range(len(letterList[letter])):
+            print(letterList[letter][i], end='')
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        userInput = sys.argv[1]
-        getFirstSingleLetter(userInput)
-        rearrangeString(userInput)
+    userInput = input('Please enter a string: ')
+    getFirstSingleLetter(userInput)
+    rearrangeString(userInput)
